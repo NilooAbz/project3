@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>جستجوی مشتری حقیقی</title>
+</head>
+<style>
+    .title{
+        text-align: center;
+        background: teal;
+    }
+
+    .main-box{
+        background: antiquewhite;
+        text-align: right;
+    }
+</style>
+<body bgcolor="#5f9ea0">
+
+<div class="title" align="center">
+    <br>
+    <h1>جستجوی مشتری حقیقی</h1>
+    <br>
+</div>
+
+<div class="main-box" align="right">
+    <br>
+    <p>لطفا اطلاعات زیر را تکمیل فرمایید </p>
+    <br>
+    <form action="CreateRealCustomer" method="get">
+        <table>
+            <tr>
+                <td> نام</td>
+                <td><input type="text" name="firstName"></td>
+            </tr>
+            <tr>
+                <td> نام خانوادگی</td>
+                <td><input type="text" name="lastName"></td>
+            </tr>
+            <tr>
+                <td>شماره مشتری</td>
+                <td><input type="text" name="customerNumber"></td>
+            </tr>
+            <tr>
+                <td>کد ملی</td>
+                <td><input type="text" name="nationalCode"></td>
+            </tr>
+        </table>
+        <input type="submit" class="button" value=" جستجو">
+        <br><br>
+        <a href="real-customer-management.html" class="form" >بازگشت به صفحه قبل </a>
+    </form>
+    <br>
+    <br>
+</div>
+</body>
+</html>
