@@ -1,3 +1,5 @@
+package dataAccessLayer;
+
 /**
  * Created by DotinSchool2 on 8/1/2016.
  */
@@ -57,4 +59,20 @@ public class RealCustomer extends Customer{
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+
+
+    public static RealCustomer CreateRealCustomer( String nationalCode, String firstName, String lastName, String fatherName, String dateOfBirth){
+
+        RealCustomer realCustomer = new RealCustomer();
+        realCustomer.setNationalCode(nationalCode);
+        realCustomer.setFirstName(firstName);
+        realCustomer.setLastName(lastName);
+        realCustomer.setFatherName(fatherName);
+        realCustomer.setDateOfBirth(dateOfBirth);
+/*        realCustomer.setId(id);
+        realCustomer.setCustomerNumber(?);*/
+        return realCustomer;
+    }
+
 }

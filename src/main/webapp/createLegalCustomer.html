@@ -2,15 +2,15 @@
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>جستجوی مشتری حقوقی</title>
+    <title>ثبت مشتری حقوقی</title>
 </head>
 <style>
-    .title {
+    .title{
         text-align: center;
         background: teal;
     }
 
-    .main-box {
+    .main-box{
         background: antiquewhite;
         text-align: right;
     }
@@ -19,7 +19,7 @@
 
 <div class="title" align="center">
     <br>
-    <h1>جستجوی مشتری حقوقی</h1>
+    <h1>ثبت مشتری حقوقی</h1>
     <br>
 </div>
 
@@ -27,24 +27,25 @@
     <br>
     <p>لطفا اطلاعات زیر را تکمیل فرمایید </p>
     <br>
-    <form action="CreateRealCustomer" method="get">
+    <!--<form action="CreateRealCustomer" method="get">-->
+    <form action="/CreateLegalCustomerServlet" method="post">
         <table>
             <tr>
-                <td> نام شرکت</td>
+                <td> نام شرکت </td>
                 <td><input type="text" name="companyName"></td>
             </tr>
             <tr>
-                <td>کد اقتصادی</td>
-                <td><input type="text" name="RecognitionCode"></td>
+                <td>تاریخ ثبت</td>
+                <td><input type="text" name="dateOfRecognition"></td>
             </tr>
             <tr>
-                <td>شماره مشتری </td>
-                <td><input type="text" name="customerNumber"></td>
+                <td>کد اقتصادی </td>
+                <td><input type="text" name="economicCode"></td>
             </tr>
         </table>
-        <input type="submit" class="button" value="جستجو">
+        <input type="submit" class="button" value="ثبت اطلاعات">
         <br><br>
-        <a href="legal-customer-management.html" class="form">بازگشت به صفحه قبل </a>
+        <a href="legalCustomerManagement.html" class="form">بازگشت به صفحه قبل</a>
     </form>
     <br>
     <br>

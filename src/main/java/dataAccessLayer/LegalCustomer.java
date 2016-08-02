@@ -1,3 +1,5 @@
+package dataAccessLayer;
+
 /**
  * Created by DotinSchool2 on 8/1/2016.
  */
@@ -39,4 +41,16 @@ public class LegalCustomer extends Customer {
     public void setDateOfRegistration(String dateOfRegistration) {
         this.dateOfRegistration = dateOfRegistration;
     }
+
+    public static LegalCustomer CreateLegalCustomer( String economicCode, String companyName, String dateOfRegistration){
+
+        LegalCustomer legalCustomer = new LegalCustomer();
+        legalCustomer.setEconomicCode(economicCode);
+        legalCustomer.setCompanyName(companyName);
+        legalCustomer.setDateOfRegistration(dateOfRegistration);
+        /*legalCustomer.setId();
+        legalCustomer.setCustomerNumber();*/
+        return legalCustomer;
+    }
+
 }

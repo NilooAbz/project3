@@ -1,3 +1,5 @@
+package dataAccessLayer;
+
 /**
  * Created by DotinSchool2 on 8/1/2016.
  */
@@ -21,4 +23,6 @@ public class Customer {
     public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }
+
+
 }
