@@ -6,6 +6,7 @@ package dataAccessLayer;
 public class LegalCustomer extends Customer {
 
     private Long id;
+    private String customerNumber;
     private String economicCode;
     private String companyName;
     private String dateOfRegistration;
@@ -16,6 +17,14 @@ public class LegalCustomer extends Customer {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
     public String getEconomicCode() {
@@ -42,12 +51,13 @@ public class LegalCustomer extends Customer {
         this.dateOfRegistration = dateOfRegistration;
     }
 
-    public static LegalCustomer CreateLegalCustomer( String economicCode, String companyName, String dateOfRegistration){
+    public static LegalCustomer CreateLegalCustomer( String economicCode, String companyName, String dateOfRegistration, String customerNumber){
 
         LegalCustomer legalCustomer = new LegalCustomer();
         legalCustomer.setEconomicCode(economicCode);
         legalCustomer.setCompanyName(companyName);
         legalCustomer.setDateOfRegistration(dateOfRegistration);
+        legalCustomer.setCustomerNumber(customerNumber);
         /*legalCustomer.setId();
         legalCustomer.setCustomerNumber();*/
         return legalCustomer;

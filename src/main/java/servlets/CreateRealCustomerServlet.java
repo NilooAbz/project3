@@ -1,11 +1,9 @@
 package servlets;
 
-import dataAccessLayer.Customer;
+import dataAccessLayer.OutputGenerator;
 import dataAccessLayer.RealCustomer;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,12 +22,14 @@ public class CreateRealCustomerServlet extends HttpServlet {
         String fatherName = request.getParameter("fatherName");
         String dateOfBirth = request.getParameter("dateOfBirth");
         String nationalCode = request.getParameter("nationalCode");
+        String outputHTML = "";
 
-        RealCustomer realCustomer = RealCustomer.CreateRealCustomer(nationalCode,firstName,lastName,fatherName,dateOfBirth);
+        RealCustomer realCustomer = RealCustomer.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
+        outputHTML = OutputGenerator.generate(realCustomer);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("");
+        out.println(outputHTML);
     }
 
 

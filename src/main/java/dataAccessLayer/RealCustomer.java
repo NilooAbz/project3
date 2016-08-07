@@ -1,11 +1,15 @@
 package dataAccessLayer;
 
+import dataAccessLayer.CRUD.CustomerCRUD;
+import dataAccessLayer.CRUD.RealCustomerCRUD;
+
 /**
  * Created by DotinSchool2 on 8/1/2016.
  */
 public class RealCustomer extends Customer{
 
     private Long id;
+    private String customerNumber;
     private String nationalCode;
     private String firstName;
     private String lastName;
@@ -18,6 +22,14 @@ public class RealCustomer extends Customer{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
     public String getNationalCode() {
@@ -60,18 +72,17 @@ public class RealCustomer extends Customer{
         this.dateOfBirth = dateOfBirth;
     }
 
-
-
     public static RealCustomer CreateRealCustomer( String nationalCode, String firstName, String lastName, String fatherName, String dateOfBirth){
 
+        //validate
         RealCustomer realCustomer = new RealCustomer();
         realCustomer.setNationalCode(nationalCode);
         realCustomer.setFirstName(firstName);
         realCustomer.setLastName(lastName);
         realCustomer.setFatherName(fatherName);
         realCustomer.setDateOfBirth(dateOfBirth);
-/*        realCustomer.setId(id);
-        realCustomer.setCustomerNumber(?);*/
+        realCustomer.setCustomerNumber(CustomerCRUD.create(realCustomer));
+
         return realCustomer;
     }
 
