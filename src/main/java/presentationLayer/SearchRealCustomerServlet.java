@@ -1,4 +1,4 @@
-package servlets;
+package presentationLayer;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;

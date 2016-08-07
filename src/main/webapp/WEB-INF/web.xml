@@ -7,19 +7,19 @@
 
     <servlet>
         <servlet-name>CreateLegalCustomerServlet</servlet-name>
-        <servlet-class>servlets.CreateLegalCustomerServlet</servlet-class>
+        <servlet-class>presentationLayer.CreateLegalCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateRealCustomerServlet</servlet-name>
-        <servlet-class>servlets.CreateRealCustomerServlet</servlet-class>
+        <servlet-class>presentationLayer.CreateRealCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchRealCustomerServlet</servlet-name>
-        <servlet-class>servlets.SearchRealCustomerServlet</servlet-class>
+        <servlet-class>presentationLayer.SearchRealCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SearchLegalCustomerServlet</servlet-name>
-        <servlet-class>servlets.SearchLegalCustomerServlet</servlet-class>
+        <servlet-class>presentationLayer.SearchLegalCustomerServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

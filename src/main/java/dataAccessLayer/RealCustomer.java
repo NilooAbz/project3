@@ -72,18 +72,6 @@ public class RealCustomer extends Customer{
         this.dateOfBirth = dateOfBirth;
     }
 
-    public static RealCustomer CreateRealCustomer( String nationalCode, String firstName, String lastName, String fatherName, String dateOfBirth){
 
-        //validate
-        RealCustomer realCustomer = new RealCustomer();
-        realCustomer.setNationalCode(nationalCode);
-        realCustomer.setFirstName(firstName);
-        realCustomer.setLastName(lastName);
-        realCustomer.setFatherName(fatherName);
-        realCustomer.setDateOfBirth(dateOfBirth);
-        realCustomer.setCustomerNumber(CustomerCRUD.create(realCustomer));
-
-        return realCustomer;
-    }
 
 }

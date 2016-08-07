@@ -1,18 +1,17 @@
 package dataAccessLayer.CRUD;
 
-import dataAccessLayer.JDBCConnection;
+import dataAccessLayer.Customer;
+import lateralRequiredFile.JDBCConnection;
 import dataAccessLayer.LegalCustomer;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by DotinSchool2 on 8/6/2016.
  */
-public class LegalCustomerCRUD {
+public class LegalCustomerCRUD extends Customer{
 
     public static void create(LegalCustomer legalCustomer){
         try {

@@ -1,0 +1,53 @@
+body{
+    /*background-color: darkkhaki;*/
+    background-image: url(../images/num4.PNG);
+}
+
+.title{
+    margin-top: 90px;
+    margin-bottom: 50px;
+    margin-right: 350px;
+    margin-left: 350px;
+    border-style: groove;
+    border-radius: 15px;
+    text-align: center;
+    background-color: darkolivegreen;
+}
+
+.button{
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    background-color: darkkhaki;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px darkolivegreen;
+}
+
+.main-box{
+
+    margin-top: 10px;
+    margin-bottom: 80px;
+    margin-left: 350px;
+    margin-right: 350px;
+    border-style: ridge;
+    border-radius: 15px;
+    text-align: center;
+    background-color: palegoldenrod;
+}
+
+p{
+    font-size: 20px;
+}
+
+
+table.main-box{
+    text-align: right;
+    align-items: right;
+    alignment: center;
+}

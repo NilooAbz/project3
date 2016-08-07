@@ -1,7 +1,8 @@
-package servlets;
+package presentationLayer;
 
-import dataAccessLayer.OutputGenerator;
+import lateralRequiredFile.OutputGenerator;
 import dataAccessLayer.RealCustomer;
+import logicLayer.RealCustomerLogic;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,11 @@ public class CreateRealCustomerServlet extends HttpServlet {
         String nationalCode = request.getParameter("nationalCode");
         String outputHTML = "";
 
-        RealCustomer realCustomer = RealCustomer.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
+        RealCustomer realCustomer = RealCustomerLogic.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
         outputHTML = OutputGenerator.generate(realCustomer);
 
-        response.setContentType("text/html");
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         out.println(outputHTML);
     }
