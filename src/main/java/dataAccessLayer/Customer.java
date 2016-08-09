@@ -3,10 +3,19 @@ package dataAccessLayer;
 /**
  * Created by DotinSchool2 on 8/1/2016.
  */
-public class Customer extends CustomerNumberGenerator{
+public class Customer {
 
     private Long id;
     private String customerNumber;
+
+    public Customer(Long id, String customerNumber) {
+        this.id = id;
+        this.customerNumber = customerNumber;
+    }
+
+    public Customer(){
+
+    }
 
     public Long getId() {
         return id;

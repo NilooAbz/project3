@@ -1,7 +1,7 @@
 package presentationLayer;
 
 import dataAccessLayer.LegalCustomer;
-import lateralRequiredFile.OutputGenerator;
+import lateralRequiredFile.OutputHtml;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -25,7 +25,7 @@ public class CreateLegalCustomerServlet extends HttpServlet{
         String outputHTML = "";
 
         LegalCustomer legalCustomer = LegalCustomer.CreateLegalCustomer(economicCode,companyName,dateOfRecognition, customerNumber);
-        outputHTML = OutputGenerator.generate(legalCustomer);
+        outputHTML = OutputHtml.generate(legalCustomer);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

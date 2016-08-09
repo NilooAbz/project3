@@ -1,6 +1,6 @@
 package presentationLayer;
 
-import lateralRequiredFile.OutputGenerator;
+import lateralRequiredFile.OutputHtml;
 import dataAccessLayer.RealCustomer;
 import logicLayer.RealCustomerLogic;
 
@@ -26,7 +26,7 @@ public class CreateRealCustomerServlet extends HttpServlet {
         String outputHTML = "";
 
         RealCustomer realCustomer = RealCustomerLogic.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
-        outputHTML = OutputGenerator.generate(realCustomer);
+        outputHTML = OutputHtml.generate(realCustomer);
 
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

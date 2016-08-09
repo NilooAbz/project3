@@ -1,7 +1,7 @@
 package logicLayer;
 
 import dataAccessLayer.CRUD.CustomerCRUD;
-import dataAccessLayer.CRUD.CustomerNumberGeneratorCRUD;
+import dataAccessLayer.CRUD.RealCustomerCRUD;
 import dataAccessLayer.RealCustomer;
 
 import java.util.ArrayList;
@@ -20,14 +20,16 @@ public class RealCustomerLogic {
         realCustomer.setLastName(lastName);
         realCustomer.setFatherName(fatherName);
         realCustomer.setDateOfBirth(dateOfBirth);
-        realCustomer.setCustomerNumber(CustomerNumberGeneratorCRUD.create(realCustomer));
+        return  RealCustomerCRUD.create(realCustomer);
 
-        return realCustomer;
     }
 
-    public static ArrayList<RealCustomer> retrieveCustomer(String customerNumber, String nationalCode, String firstName, String lastName, String fatherName, String dateOfBirth){
+    public static ArrayList<RealCustomer> retrieveRealCustomer(String customerNumber, String nationalCode, String firstName, String lastName){
+        //validate
+        return RealCustomerCRUD.retrieve(customerNumber, nationalCode, firstName, lastName);
+    }
 
-
-        return null;
+    public static void deleteById(Long id){
+        //RealCustomerCRUD
     }
 }
