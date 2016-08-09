@@ -187,7 +187,7 @@ public class OutputHtml {
         //stringBuilder.append("                 <form>");
         stringBuilder.append("                <p>اطلاعات مشتری حقیقی :</p>");
         stringBuilder.append("                <br>");
-        stringBuilder.append("<input type='hidden' name='id' value='" + realCustomer.getId() + "'>");
+        //stringBuilder.append("<input type='hidden' name='id' value='" + realCustomer.getId() + "'>");
         stringBuilder.append("                    <table>");
         stringBuilder.append("                        <tr>");
         stringBuilder.append("                            <td>شماره مشتری</td>");
