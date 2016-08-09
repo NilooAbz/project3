@@ -214,7 +214,7 @@ public class OutputHtml {
         //stringBuilder.append("                    <td><a href=SaveRealCustomerEditsServlet class=button> ذخیره تغییرات </a></td");
         stringBuilder.append("                    </table>");
         /*stringBuilder.append("                    <input type='submit' class='button' value='ذخیره تغییرات'>");*/
-        stringBuilder.append("                    <a href=SaveRealCustomerEditsServlet class=button> ذخیره تغییرات </a>");
+        stringBuilder.append("                    <a href=SaveRealCustomerEditsServlet type='submit' class=button> ذخیره تغییرات </a>");
         stringBuilder.append("                    </form>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
