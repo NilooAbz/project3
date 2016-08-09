@@ -34,4 +34,13 @@ public class RealCustomerLogic {
         RealCustomerCRUD.deleteById(realcustomer.getId());
         CustomerCRUD.deleteById(realcustomer.getId());
     }
+
+    public static RealCustomer retrieveRealCustomerById(Long id){
+
+        return RealCustomerCRUD.retrieveById(id);
+    }
+
+    public static void updateCustomer( String customerNumber, String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode){
+        RealCustomerCRUD.updateCustomer(customerNumber, firstName, lastName, fatherName, dateOfBirth, nationalCode);
+    }
 }

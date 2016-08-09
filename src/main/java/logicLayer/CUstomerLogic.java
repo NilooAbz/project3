@@ -1,6 +1,5 @@
 package logicLayer;
 
-import dataAccessLayer.CRUD.CustomerCRUD;
 import dataAccessLayer.CRUD.RealCustomerCRUD;
 import dataAccessLayer.RealCustomer;
 
@@ -9,9 +8,9 @@ import dataAccessLayer.RealCustomer;
  */
 public class CustomerLogic {
 
-    public static void deleteById(String customerNumber){
+    /*public static void deleteById(String customerNumber){
         //RealCustomerCRUD
-        RealCustomer realcustomer = RealCustomerCRUD.retrieveRealCustomerById(customerNumber);
+        RealCustomer realcustomer = RealCustomerCRUD.retrieveById(customerNumber);
         RealCustomerCRUD.deleteById(realcustomer.getId());
-    }
+    }*/
 }

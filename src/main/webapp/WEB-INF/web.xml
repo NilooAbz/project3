@@ -25,6 +25,14 @@
         <servlet-name>DeleteRealCustomerServlet</servlet-name>
         <servlet-class>presentationLayer.DeleteRealCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateRealCustomerServlet</servlet-name>
+        <servlet-class>presentationLayer.UpdateRealCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveRealCustomerEditsServlet</servlet-name>
+        <servlet-class>presentationLayer.SaveRealCustomerEditsServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateLegalCustomerServlet</servlet-name>
@@ -45,6 +53,14 @@
     <servlet-mapping>
         <servlet-name>DeleteRealCustomerServlet</servlet-name>
         <url-pattern>/DeleteRealCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRealCustomerServlet</servlet-name>
+        <url-pattern>/UpdateRealCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveRealCustomerEditsServlet</servlet-name>
+        <url-pattern>/SaveRealCustomerEditsServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
