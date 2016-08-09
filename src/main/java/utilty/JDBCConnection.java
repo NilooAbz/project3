@@ -1,14 +1,14 @@
-package lateralRequiredFile;
+package utilty;
 
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import com.mysql.jdbc.Driver;
 
 /**
  * Created by DotinSchool2 on 8/2/2016.
  */
+
 public class JDBCConnection {
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";

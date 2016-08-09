@@ -21,6 +21,10 @@
         <servlet-name>SearchLegalCustomerServlet</servlet-name>
         <servlet-class>presentationLayer.SearchLegalCustomerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteRealCustomerServlet</servlet-name>
+        <servlet-class>presentationLayer.DeleteRealCustomerServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CreateLegalCustomerServlet</servlet-name>
@@ -37,6 +41,10 @@
     <servlet-mapping>
         <servlet-name>SearchLegalCustomerServlet</servlet-name>
         <url-pattern>/SearchLegalCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRealCustomerServlet</servlet-name>
+        <url-pattern>/DeleteRealCustomerServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

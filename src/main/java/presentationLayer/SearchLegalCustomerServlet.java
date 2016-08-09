@@ -1,7 +1,7 @@
 package presentationLayer;
 
 import dataAccessLayer.RealCustomer;
-import lateralRequiredFile.OutputHtml;
+import utilty.OutputHtml;
 import logicLayer.RealCustomerLogic;
 
 import javax.servlet.ServletException;
@@ -24,14 +24,14 @@ public class SearchLegalCustomerServlet extends HttpServlet {
         /*String fatherName = request.getParameter("fatherName");
         String dateOfBirth = request.getParameter("dateOfBirth");*/
         String nationalCode = request.getParameter("nationalCode");
-        String outputHTML = "";
+        String outPut = "";
 
         ArrayList<RealCustomer> realCustomers = RealCustomerLogic.retrieveRealCustomer(customerNumber,nationalCode,firstName,lastName);
-        outputHTML = OutputHtml.generateRealCustomerResults(realCustomers);
+        outPut = OutputHtml.generateRealCustomerResults(realCustomers);
 
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        out.println(outputHTML);
+        out.println(outPut);
     }
 }

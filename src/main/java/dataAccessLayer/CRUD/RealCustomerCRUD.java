@@ -1,7 +1,7 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
-import lateralRequiredFile.JDBCConnection;
+import utilty.JDBCConnection;
 import dataAccessLayer.RealCustomer;
 
 import java.sql.*;
@@ -100,5 +100,46 @@ public class RealCustomerCRUD extends Customer{
         }
         return preparedStatement;
     }
+
+
+    public static RealCustomer retrieveRealCustomerById( String customerNumber){
+
+        RealCustomer realcustomer = new RealCustomer();
+        try {
+            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("SELECT * From realcustomer WHERE customerNumber=?;");
+            preparedStatement.setString(1,customerNumber);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()){
+                realcustomer.setId(resultSet.getLong("id"));
+                realcustomer.setCustomerNumber(resultSet.getString("customerNumber"));
+                realcustomer.setFirstName(resultSet.getString("firstName"));
+                realcustomer.setLastName(resultSet.getString("lastName"));
+                realcustomer.setFatherName(resultSet.getString("fatherName"));
+                realcustomer.setNationalCode(resultSet.getString("nationalCode"));
+                realcustomer.setDateOfBirth(resultSet.getString("dateOfBirth"));
+            }
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return realcustomer;
+    }
+
+    public static void deleteById(Long id){
+
+        try {
+            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("DELETE From realcustomer WHERE id=?;");
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

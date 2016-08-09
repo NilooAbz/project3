@@ -1,7 +1,7 @@
 package presentationLayer;
 
 import dataAccessLayer.LegalCustomer;
-import lateralRequiredFile.OutputHtml;
+import utilty.OutputHtml;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -22,14 +22,14 @@ public class CreateLegalCustomerServlet extends HttpServlet{
         String dateOfRecognition = request.getParameter("dateOfRecognition");
         String economicCode = request.getParameter("economicCode");
         String customerNumber = request.getParameter("customerNumber");
-        String outputHTML = "";
+        String outPut = "";
 
         LegalCustomer legalCustomer = LegalCustomer.CreateLegalCustomer(economicCode,companyName,dateOfRecognition, customerNumber);
-        outputHTML = OutputHtml.generate(legalCustomer);
+        outPut = OutputHtml.generate(legalCustomer);
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println(outputHTML);
+        out.println(outPut);
     }
 
     public void destroy()

@@ -1,4 +1,4 @@
-package lateralRequiredFile;
+package utilty;
 
 import dataAccessLayer.LegalCustomer;
 import dataAccessLayer.RealCustomer;

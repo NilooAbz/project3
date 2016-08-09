@@ -1,7 +1,7 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
-import lateralRequiredFile.JDBCConnection;
+import utilty.JDBCConnection;
 import dataAccessLayer.LegalCustomer;
 
 import java.sql.Date;

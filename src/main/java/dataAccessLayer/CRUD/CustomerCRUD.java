@@ -1,8 +1,7 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
-import dataAccessLayer.RealCustomer;
-import lateralRequiredFile.JDBCConnection;
+import utilty.JDBCConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,6 +55,8 @@ public class CustomerCRUD {
         }
         return  new Customer(id , customerNumber);
     }
+
+
 
 
 
