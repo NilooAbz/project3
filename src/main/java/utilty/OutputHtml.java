@@ -140,18 +140,23 @@ public class OutputHtml {
         stringBuilder.append("                        <tr>");
         stringBuilder.append("                            <td> نام </td>");
         stringBuilder.append("                            <td> نام خانوادگی</td>");
+        stringBuilder.append("                            <td>نام پدر</td>");
+        stringBuilder.append("                            <td>تاریخ تولد</td>");
         stringBuilder.append("                            <td>کد ملی</td>");
         stringBuilder.append("                            <td>شماره مشتری</td>");
+        stringBuilder.append("                <br>");
         stringBuilder.append("                            <td>انجام عملیات</td>");
         stringBuilder.append("                        </tr>");
         for (RealCustomer realCustomer : realCustomers) {
             stringBuilder.append("                        <tr>");
             stringBuilder.append("                            <td>" + realCustomer.getFirstName() + "</td>");
             stringBuilder.append("                            <td>" + realCustomer.getLastName() + "</td>");
+            stringBuilder.append("                            <td>" + realCustomer.getFatherName() + "</td>");
+            stringBuilder.append("                            <td>" + realCustomer.getDateOfBirth() + "</td>");
             stringBuilder.append("                            <td>" + realCustomer.getNationalCode() + "</td>");
             stringBuilder.append("                            <td>" + realCustomer.getCustomerNumber() + "</td>");
-/*            stringBuilder.append("                            <td><a href=DeleteRealCustomerServlet?id=" + realCustomer.getId() + " class=form>حذف</a>");
-            stringBuilder.append("                            <a href=UpdateRealCustomerServlet?id=" + realCustomer.getId() + " class=form>اصلاح</a></td>");*/}
+            stringBuilder.append("                            <td><a href=DeleteRealCustomerServlet?id=" + realCustomer.getId() + " class=button type=>حذف</a>");
+            stringBuilder.append("                            <a href=UpdateRealCustomerServlet?id=" + realCustomer.getId() + " class=button>اصلاح</a></td>");}
         stringBuilder.append("                    </table>");
         stringBuilder.append("                    <a href=search-real-customer.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");

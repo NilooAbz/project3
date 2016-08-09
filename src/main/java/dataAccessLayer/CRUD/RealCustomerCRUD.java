@@ -51,13 +51,13 @@ public class RealCustomerCRUD extends Customer{
             ResultSet results = preparedStatement.executeQuery();
             while (results.next()){
                 RealCustomer realCustomer = new RealCustomer();
-                //realCustomer.setId(Long.valueOf(results.getInt("id")));
+                realCustomer.setId(results.getLong("id"));
                 realCustomer.setCustomerNumber(results.getString("customerNumber"));
                 realCustomer.setNationalCode(results.getString("nationalCode"));
                 realCustomer.setFirstName(results.getString("firstName"));
                 realCustomer.setLastName(results.getString("lastName"));
-                //realCustomer.setFatherName(results.getString("fatherName"));
-                //realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth")));
+                realCustomer.setFatherName(results.getString("fatherName"));
+                realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth")));
                 //realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth").toLocalDate()));
                 realCustomers.add(realCustomer);
             }
@@ -102,12 +102,12 @@ public class RealCustomerCRUD extends Customer{
     }
 
 
-    public static RealCustomer retrieveRealCustomerById( String customerNumber){
+    public static RealCustomer retrieveById(Long id){
 
         RealCustomer realcustomer = new RealCustomer();
         try {
-            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("SELECT * From realcustomer WHERE customerNumber=?;");
-            preparedStatement.setString(1,customerNumber);
+            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("SELECT * From realcustomer WHERE id=?;");
+            preparedStatement.setLong(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()){

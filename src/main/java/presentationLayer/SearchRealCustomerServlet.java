@@ -22,7 +22,7 @@ public class SearchRealCustomerServlet extends HttpServlet{
         String customerNumber = request.getParameter("customerNumber");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        /*String fatherName = request.getParameter("fatherName");
+/*        String fatherName = request.getParameter("fatherName");
         String dateOfBirth = request.getParameter("dateOfBirth");*/
         String nationalCode = request.getParameter("nationalCode");
         String outPut = "";

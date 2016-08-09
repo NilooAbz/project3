@@ -29,8 +29,8 @@ public class RealCustomerLogic {
         return RealCustomerCRUD.retrieve(customerNumber, nationalCode, firstName, lastName);
     }
 
-    public static void deleteById(String customerNumber){
-        RealCustomer realcustomer = RealCustomerCRUD.retrieveRealCustomerById(customerNumber);
+    public static void deleteById(Long id){
+        RealCustomer realcustomer = RealCustomerCRUD.retrieveById(id);
         RealCustomerCRUD.deleteById(realcustomer.getId());
         CustomerCRUD.deleteById(realcustomer.getId());
     }
