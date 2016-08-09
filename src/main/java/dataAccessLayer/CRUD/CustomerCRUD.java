@@ -56,8 +56,15 @@ public class CustomerCRUD {
         return  new Customer(id , customerNumber);
     }
 
+    public static void deleteById(Long id){
 
+        try {
+            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("DELETE From customer WHERE id=?;");
+            preparedStatement.setLong(1,id);
+            preparedStatement.executeUpdate();
 
-
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

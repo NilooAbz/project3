@@ -94,6 +94,29 @@ public class OutputHtml {
         stringBuilder.append("</html>");
 
         return stringBuilder.toString();
+    }public static String generateSuccessfulDelete(String message){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<!DOCTYPE html>");
+        stringBuilder.append("<html lang=fa>");
+        stringBuilder.append("<head>");
+        stringBuilder.append("    <meta charset=UTF-8>");
+        stringBuilder.append("    <link href=css/Style.css rel=stylesheet>");
+        stringBuilder.append("    <title>عملیات موفق</title>");
+        stringBuilder.append("</head>");
+        stringBuilder.append("<body>");
+        stringBuilder.append("<div class=title>");
+        stringBuilder.append("    <h1>عملیات موفق</h1>");
+        stringBuilder.append("</div>");
+        stringBuilder.append("            <div class=main-box>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                <p>" + message + "</p>");
+        stringBuilder.append("<a href=realCustomerManagement.html class=form>بازگشت به صفحه قبل</a>");
+        stringBuilder.append("            </div>");
+        stringBuilder.append("</body>");
+        stringBuilder.append("</html>");
+
+        return stringBuilder.toString();
     }
 
     public static String generateRealCustomerResults(ArrayList<RealCustomer> realCustomers){
@@ -127,8 +150,8 @@ public class OutputHtml {
             stringBuilder.append("                            <td>" + realCustomer.getLastName() + "</td>");
             stringBuilder.append("                            <td>" + realCustomer.getNationalCode() + "</td>");
             stringBuilder.append("                            <td>" + realCustomer.getCustomerNumber() + "</td>");
-            stringBuilder.append("                            <td><a href=DeleteRealCustomerServlet?id=" + realCustomer.getId() + " class=form>حذف</a>");
-            stringBuilder.append("                            <a href=UpdateRealCustomerServlet?id=" + realCustomer.getId() + " class=form>اصلاح</a></td>");}
+/*            stringBuilder.append("                            <td><a href=DeleteRealCustomerServlet?id=" + realCustomer.getId() + " class=form>حذف</a>");
+            stringBuilder.append("                            <a href=UpdateRealCustomerServlet?id=" + realCustomer.getId() + " class=form>اصلاح</a></td>");*/}
         stringBuilder.append("                    </table>");
         stringBuilder.append("                    <a href=search-real-customer.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");

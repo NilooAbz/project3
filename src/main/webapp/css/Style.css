@@ -46,8 +46,15 @@ p{
 }
 
 
-table.main-box{
+table{
     text-align: right;
     align-items: right;
-    alignment: center;
+    alignment: right;
+}
+
+label{
+    text-align: right;
+    align-items: right;
+    alignment: right;
+
 }

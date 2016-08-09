@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/Style.css">
+    <title>حذف مشتری حقیقی</title>
+</head>
+
+<body bgcolor="#5f9ea0">
+
+<div class="title" align="center">
+    <br>
+    <h1> حذف مشتری حقیقی </h1>
+    <br>
+</div>
+
+<div class="main-box" align="right">
+    <br>
+    <p> لطفا شماره مشتری مورد نظر را وارد فرمایید</p><br>
+    <form action="/DeleteRealCustomerServlet" method="post">
+        <table>
+            <tr>
+                <td> شماره مشتری</td>
+                <td><label>
+                    <input type="text" name="customerNumber">
+                </label></td>
+            </tr>
+        </table>
+        <input type="submit" class="button" value=" حذف"><br><br>
+        <a href="realCustomerManagement.html" class="form" >بازگشت به صفحه قبل </a>
+    </form>
+    <br>
+</div>
+</body>
+</html>
