@@ -147,12 +147,14 @@ public class LegalCustomerCRUD extends Customer{
             preparedStatement.setString(3, dateOfRegistration);
             preparedStatement.setString(4, customerNumber);
 
-            LegalCustomerLogic.validate(economicCode, companyName, dateOfRegistration);
-
             preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new DatabaseConnectionException(e.getMessage() + "خطا در به روز رسانی اطلاعات پایگاه داده!");
         }
+    }
+
+    public static List findByNationalCode(String economicCode){
+        return retrieve("","",economicCode);
     }
 }

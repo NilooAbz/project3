@@ -1,6 +1,7 @@
 package presentationLayer;
 
 import exceptions.DatabaseConnectionException;
+import exceptions.DuplicateDataException;
 import exceptions.EmptyFieldException;
 import exceptions.NotExistNationalCodeException;
 import logicLayer.RealCustomerLogic;
@@ -31,7 +32,7 @@ public class SaveRealCustomerEditsServlet extends HttpServlet {
         String outPut = "";
 
         try {
-            RealCustomerLogic.updateCustomer( customerNumber, firstName, lastName, fatherName, dateOfBirth, nationalCode);
+            RealCustomerLogic.updateCustomer( customerNumber.trim(), firstName.trim(), lastName.trim(), fatherName.trim(), dateOfBirth.trim(), nationalCode.trim());
             outPut = OutputHtml.generateRealSuccessful("اطلاعات مشتری با موفقیت اصلاح شد.");
         } catch (DatabaseConnectionException e) {
             outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
@@ -39,7 +40,8 @@ public class SaveRealCustomerEditsServlet extends HttpServlet {
             outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
         } catch (NotExistNationalCodeException e) {
             outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
-        }
+        } catch (DuplicateDataException e) {
+            outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());        }
 
 
         response.setContentType("text/html; charset=UTF-8");

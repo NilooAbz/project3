@@ -5,12 +5,10 @@ import dataAccessLayer.CRUD.LegalCustomerCRUD;
 import dataAccessLayer.CRUD.RealCustomerCRUD;
 import dataAccessLayer.LegalCustomer;
 import dataAccessLayer.RealCustomer;
-import exceptions.AssignCustomerNumberException;
-import exceptions.DatabaseConnectionException;
-import exceptions.EmptyFieldException;
-import exceptions.NotExistNationalCodeException;
+import exceptions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DotinSchool2 on 8/10/2016.
@@ -18,9 +16,14 @@ import java.util.ArrayList;
 public class LegalCustomerLogic {
 
     public static LegalCustomer CreateLegalCustomer(String economicCode, String companyName, String dateOfRegistration)
-            throws AssignCustomerNumberException, NotExistNationalCodeException, EmptyFieldException, DatabaseConnectionException {
+            throws AssignCustomerNumberException, NotExistNationalCodeException, EmptyFieldException, DatabaseConnectionException, DuplicateDataException {
 
         validate(economicCode.trim(), companyName.trim(), dateOfRegistration.trim());
+
+        if (LegalCustomerCRUD.findByNationalCode(economicCode.trim()).size() > 0){
+            throw new DuplicateDataException("کد اقتصادی وارد شده تکراری است.");
+        }
+
         LegalCustomer legalCustomer = new LegalCustomer();
         legalCustomer.setEconomicCode(economicCode);
         legalCustomer.setCompanyName(companyName);
@@ -61,7 +64,20 @@ public class LegalCustomerLogic {
     }
 
     public static void updateCustomer( String customerNumber, String companyName, String economicCode, String dateOfRegistration)
-            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException {
+            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException, DuplicateDataException {
+
+        LegalCustomerLogic.validate(economicCode, companyName, dateOfRegistration);
+        List<LegalCustomer> legalCustomers = LegalCustomerCRUD.findByNationalCode(economicCode);
+        if (legalCustomers.size() > 0){
+            for (LegalCustomer legalCustomer : legalCustomers){
+                if(!legalCustomer.getCustomerNumber().equals(customerNumber))
+                {
+                    throw new DuplicateDataException("کد ملی وارد شده تکراری است.");
+                }
+            }
+        }
+
+
         LegalCustomerCRUD.updateCustomer(customerNumber, companyName, economicCode, dateOfRegistration);
     }
 }

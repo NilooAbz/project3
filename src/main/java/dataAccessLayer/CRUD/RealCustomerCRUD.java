@@ -1,10 +1,7 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
-import exceptions.AssignCustomerNumberException;
-import exceptions.DatabaseConnectionException;
-import exceptions.EmptyFieldException;
-import exceptions.NotExistNationalCodeException;
+import exceptions.*;
 import logicLayer.RealCustomerLogic;
 import utilty.JDBCConnection;
 import dataAccessLayer.RealCustomer;
@@ -19,11 +16,12 @@ import java.util.List;
 public class RealCustomerCRUD extends Customer{
 
     public static RealCustomer create(RealCustomer realCustomer)
-            throws DatabaseConnectionException, AssignCustomerNumberException {
+            throws DatabaseConnectionException, AssignCustomerNumberException, DuplicateDataException {
 
         Customer customer = CustomerCRUD.create();
         realCustomer.setId(customer.getId());
         realCustomer.setCustomerNumber(customer.getCustomerNumber());
+
         try {
             //JDBCConnection.getJDBCConnection().setAutoCommit(false);
 
@@ -43,15 +41,13 @@ public class RealCustomerCRUD extends Customer{
         } catch (SQLException e) {
             throw new DatabaseConnectionException(e.getMessage() + "خطا در ایجاد اتصال به پایگاه داده!");
         }
+
         return  realCustomer;
     }
 
     public static ArrayList<RealCustomer> retrieve(String customerNumber, String nationalCode, String firstName, String lastName){
         ArrayList<RealCustomer> realCustomers = new ArrayList<RealCustomer>();
         PreparedStatement preparedStatement = generateFromDatabase( customerNumber, nationalCode, firstName, lastName);
-        //PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection();
-        //String sqlCommand =  "SELECT * From realcustomer WHERE ";
-        //ResultSet results = preparedStatement.executeQuery(sqlCommand);
         try {
             ResultSet results = preparedStatement.executeQuery();
             while (results.next()){
@@ -63,7 +59,6 @@ public class RealCustomerCRUD extends Customer{
                 realCustomer.setLastName(results.getString("lastName"));
                 realCustomer.setFatherName(results.getString("fatherName"));
                 realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth")));
-                //realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth").toLocalDate()));
                 realCustomers.add(realCustomer);
             }
         } catch (SQLException e) {
@@ -106,7 +101,6 @@ public class RealCustomerCRUD extends Customer{
         return preparedStatement;
     }
 
-
     public static RealCustomer retrieveById(Long id){
 
         RealCustomer realcustomer = new RealCustomer();
@@ -147,7 +141,7 @@ public class RealCustomerCRUD extends Customer{
     }
 
     public static void updateCustomer( String customerNumber, String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode)
-            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException {
+            throws DatabaseConnectionException {
         try {
             PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement
                     ("UPDATE realcustomer SET firstName = ? , lastName =  ? ,  fatherName = ?  ,  nationalCode = ?  ,  dateOfBirth = ?  WHERE customerNumber=?");
@@ -159,13 +153,17 @@ public class RealCustomerCRUD extends Customer{
             preparedStatement.setString(5, dateOfBirth);
             preparedStatement.setString(6, customerNumber);
 
-            RealCustomerLogic.validate(firstName.trim(), lastName.trim(), fatherName.trim(), dateOfBirth.trim(), nationalCode.trim());
 
             preparedStatement.execute();
 
         } catch (SQLException e) {
             throw new DatabaseConnectionException(e.getMessage() + "خطا در به روز رسانی اطلاعات پایگاه داده!");
         }
+
+    }
+
+    public static List findByNationalCode(String nationalCode){
+        return retrieve("", nationalCode, "", "");
     }
 }
 

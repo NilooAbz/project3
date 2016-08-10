@@ -1,10 +1,8 @@
 package presentationLayer;
 
+import dataAccessLayer.CRUD.CustomerCRUD;
 import dataAccessLayer.RealCustomer;
-import exceptions.AssignCustomerNumberException;
-import exceptions.DatabaseConnectionException;
-import exceptions.EmptyFieldException;
-import exceptions.NotExistNationalCodeException;
+import exceptions.*;
 import logicLayer.RealCustomerLogic;
 import utilty.OutputHtml;
 
@@ -33,6 +31,7 @@ public class CreateRealCustomerServlet extends HttpServlet {
         RealCustomer realCustomer = null;
         try {
             realCustomer = RealCustomerLogic.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
+
             outPut = OutputHtml.generate(realCustomer);
 
         } catch (NotExistNationalCodeException e) {
@@ -42,6 +41,8 @@ public class CreateRealCustomerServlet extends HttpServlet {
         } catch (DatabaseConnectionException e) {
             outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         } catch (AssignCustomerNumberException e) {
+            outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
+        } catch (DuplicateDataException e) {
             outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         }
 

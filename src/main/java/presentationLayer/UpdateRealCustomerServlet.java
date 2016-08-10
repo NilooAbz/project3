@@ -31,4 +31,9 @@ public class UpdateRealCustomerServlet extends HttpServlet{
         PrintWriter out = response.getWriter();
         out.println(outPut);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req , resp);
+    }
 }

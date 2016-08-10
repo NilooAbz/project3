@@ -434,6 +434,7 @@ public class OutputHtml {
         stringBuilder.append("                        <tr>");
         stringBuilder.append("                            <td>شماره مشتری</td>");
         stringBuilder.append("                            <td><input type='text' name='customerNumber' value='" + realCustomer.getCustomerNumber() + "' readonly ></td>");
+        stringBuilder.append("                            <td><input type='hidden' name='id' value='" + realCustomer.getId() + "' ></td>");
         stringBuilder.append("                        </tr>");
         stringBuilder.append("                        <tr>");
         stringBuilder.append("                            <td> نام  </td>");

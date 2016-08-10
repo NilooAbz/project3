@@ -3,12 +3,10 @@ package logicLayer;
 import dataAccessLayer.CRUD.CustomerCRUD;
 import dataAccessLayer.CRUD.RealCustomerCRUD;
 import dataAccessLayer.RealCustomer;
-import exceptions.AssignCustomerNumberException;
-import exceptions.DatabaseConnectionException;
-import exceptions.EmptyFieldException;
-import exceptions.NotExistNationalCodeException;
+import exceptions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DotinSchool2 on 8/7/2016.
@@ -16,10 +14,15 @@ import java.util.ArrayList;
 public class RealCustomerLogic {
 
     public static RealCustomer CreateRealCustomer(String nationalCode, String firstName, String lastName, String fatherName, String dateOfBirth)
-            throws NotExistNationalCodeException, EmptyFieldException, DatabaseConnectionException, AssignCustomerNumberException {
+            throws NotExistNationalCodeException, EmptyFieldException, DatabaseConnectionException, AssignCustomerNumberException, DuplicateDataException {
 
         validate(firstName.trim(), lastName.trim(), fatherName.trim(), dateOfBirth.trim(), nationalCode.trim());
+
+        if (RealCustomerCRUD.findByNationalCode(nationalCode.trim()).size() > 0){
+            throw new DuplicateDataException("کد ملی وارد شده تکراری است.");
+        }
         RealCustomer realCustomer = new RealCustomer();
+
         realCustomer.setNationalCode(nationalCode);
         realCustomer.setFirstName(firstName);
         realCustomer.setLastName(lastName);
@@ -29,7 +32,7 @@ public class RealCustomerLogic {
     }
 
     public static  void validate(String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode)
-            throws EmptyFieldException, NotExistNationalCodeException {
+            throws EmptyFieldException, NotExistNationalCodeException, DuplicateDataException {
         if (firstName.equals("")) {
             throw new EmptyFieldException("لطفا فیلد نام را وارد کنید.");
         }
@@ -51,6 +54,7 @@ public class RealCustomerLogic {
 
     }
 
+
     public static ArrayList<RealCustomer> retrieveRealCustomer(String customerNumber, String nationalCode, String firstName, String lastName){
 
         return RealCustomerCRUD.retrieve(customerNumber, nationalCode, firstName, lastName);
@@ -68,7 +72,18 @@ public class RealCustomerLogic {
     }
 
     public static void updateCustomer( String customerNumber, String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode)
-            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException {
+            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException, DuplicateDataException {
+        validate(firstName.trim(), lastName.trim(), fatherName.trim(), dateOfBirth.trim(), nationalCode.trim());
+
+        List<RealCustomer> realCustomers = RealCustomerCRUD.findByNationalCode(nationalCode);
+        if (realCustomers.size() > 0){
+            for (RealCustomer realCustomer : realCustomers){
+                if(!realCustomer.getCustomerNumber().equals(customerNumber))
+                {
+                    throw new DuplicateDataException("کد ملی وارد شده تکراری است.");
+                }
+            }
+        }
         RealCustomerCRUD.updateCustomer(customerNumber, firstName, lastName, fatherName, dateOfBirth, nationalCode);
     }
 }

@@ -1,6 +1,8 @@
 body{
     /*background-color: darkkhaki;*/
-    background-image: url("../images/num3.PNG");
+    background-image: url("../images/num3.png");
+    direction: rtl;
+    align-self: center;
 }
 
 .title{
@@ -31,6 +33,9 @@ body{
 
 .main-box{
 
+    align-content: center;
+    text-align:center;
+    align-items: center;
     margin-top: 10px;
     margin-bottom: 80px;
     margin-left: 350px;
@@ -47,15 +52,15 @@ p{
 
 
 table{
-    text-align: right;
-    align-items: right;
-    alignment: right;
+    text-align: center;
+    align-items: center;
+    alignment: center;
 }
 
-label{
-    text-align: right;
-    align-items: right;
-    alignment: right;
+form{
+    text-align: center;
+    align-items: center;
+    alignment: center;
 }
 /*
 .result-table {

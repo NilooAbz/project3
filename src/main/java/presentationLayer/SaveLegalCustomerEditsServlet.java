@@ -1,6 +1,7 @@
 package presentationLayer;
 
 import exceptions.DatabaseConnectionException;
+import exceptions.DuplicateDataException;
 import exceptions.EmptyFieldException;
 import exceptions.NotExistNationalCodeException;
 import logicLayer.LegalCustomerLogic;
@@ -37,6 +38,8 @@ public class SaveLegalCustomerEditsServlet extends HttpServlet {
         } catch (EmptyFieldException e) {
             outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
         } catch (NotExistNationalCodeException e) {
+            outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
+        } catch (DuplicateDataException e) {
             outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
         }
 

@@ -1,10 +1,7 @@
 package presentationLayer;
 
 import dataAccessLayer.LegalCustomer;
-import exceptions.AssignCustomerNumberException;
-import exceptions.DatabaseConnectionException;
-import exceptions.EmptyFieldException;
-import exceptions.NotExistNationalCodeException;
+import exceptions.*;
 import logicLayer.LegalCustomerLogic;
 import utilty.OutputHtml;
 
@@ -43,6 +40,8 @@ public class CreateLegalCustomerServlet extends HttpServlet{
         } catch (NotExistNationalCodeException e) {
             outPut = OutputHtml.createLegalExceptionMessage(e.getMessage());
         } catch (DatabaseConnectionException e) {
+            outPut = OutputHtml.createLegalExceptionMessage(e.getMessage());
+        } catch (DuplicateDataException e) {
             outPut = OutputHtml.createLegalExceptionMessage(e.getMessage());
         }
 

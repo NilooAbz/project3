@@ -2,7 +2,6 @@ package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
 import exceptions.AssignCustomerNumberException;
-import exceptions.DuplicateDataException;
 import utilty.JDBCConnection;
 
 import java.sql.PreparedStatement;
