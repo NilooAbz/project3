@@ -1,8 +1,12 @@
 package presentationLayer;
 
-import utilty.OutputHtml;
 import dataAccessLayer.RealCustomer;
+import exceptions.AssignCustomerNumberException;
+import exceptions.DatabaseConnectionException;
+import exceptions.EmptyFieldException;
+import exceptions.NotExistNationalCodeException;
 import logicLayer.RealCustomerLogic;
+import utilty.OutputHtml;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +29,21 @@ public class CreateRealCustomerServlet extends HttpServlet {
         String nationalCode = request.getParameter("nationalCode");
         String outPut = "";
 
-        RealCustomer realCustomer = RealCustomerLogic.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
-        outPut = OutputHtml.generate(realCustomer);
+
+        RealCustomer realCustomer = null;
+        try {
+            realCustomer = RealCustomerLogic.CreateRealCustomer(nationalCode, firstName, lastName, fatherName, dateOfBirth);
+            outPut = OutputHtml.generate(realCustomer);
+
+        } catch (NotExistNationalCodeException e) {
+            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+        } catch (EmptyFieldException e) {
+            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+        } catch (DatabaseConnectionException e) {
+            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+        } catch (AssignCustomerNumberException e) {
+            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+        }
 
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

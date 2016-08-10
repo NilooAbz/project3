@@ -1,6 +1,8 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
+import exceptions.AssignCustomerNumberException;
+import exceptions.DuplicateDataException;
 import utilty.JDBCConnection;
 
 import java.sql.PreparedStatement;
@@ -14,29 +16,7 @@ import java.sql.Statement;
 public class CustomerCRUD {
 
 
-    private static String generateCustomerNumber() {
-        String customerNumber = "";
-        try {
-            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement(
-                    "SELECT MAX(customerNumber)  FROM customer " );
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            //customerNumber = String.valueOf(resultSet.getInt("customerNumber") + 1);
-            if (resultSet.next()) {
-                customerNumber = String.valueOf(resultSet.getInt(1) + 1);
-            }else{
-                customerNumber = "1000";
-            }
-            resultSet.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-       // create(customerNumber);
-        Customer customer = new Customer();
-        customer.setCustomerNumber(customerNumber);
-        return customerNumber;
-    }
-    public static Customer create(){
+    public static Customer create() throws AssignCustomerNumberException {
         String customerNumber = "";
         Long id = 0l;
         try {
@@ -53,7 +33,31 @@ public class CustomerCRUD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        if (customerNumber == ""){
+            throw new AssignCustomerNumberException("خطا در تخصیص شماره مشتری! لطفا مجددا تلاش فرمایید.");
+        }
         return  new Customer(id , customerNumber);
+    }
+
+    private static String generateCustomerNumber() {
+        String customerNumber = "";
+        try {
+            PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement(
+                    "SELECT MAX(customerNumber)  FROM customer " );
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                customerNumber = String.valueOf(resultSet.getInt(1) + 1);
+            }else{
+                customerNumber = "1000";
+            }
+            resultSet.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Customer customer = new Customer();
+        customer.setCustomerNumber(customerNumber);
+        return customerNumber;
     }
 
     public static void deleteById(Long id){

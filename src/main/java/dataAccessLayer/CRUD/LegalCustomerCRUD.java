@@ -1,6 +1,7 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
+import exceptions.AssignCustomerNumberException;
 import utilty.JDBCConnection;
 import dataAccessLayer.LegalCustomer;
 
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  */
 public class LegalCustomerCRUD extends Customer{
 
-    public static LegalCustomer create(LegalCustomer legalCustomer){
+    public static LegalCustomer create(LegalCustomer legalCustomer) throws AssignCustomerNumberException {
 
         Customer customer = CustomerCRUD.create();
         legalCustomer.setId(customer.getId());

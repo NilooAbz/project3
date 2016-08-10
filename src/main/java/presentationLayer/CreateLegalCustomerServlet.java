@@ -1,6 +1,8 @@
 package presentationLayer;
 
 import dataAccessLayer.LegalCustomer;
+import exceptions.AssignCustomerNumberException;
+import logicLayer.LegalCustomerLogic;
 import utilty.OutputHtml;
 
 import javax.servlet.ServletException;
@@ -19,12 +21,16 @@ public class CreateLegalCustomerServlet extends HttpServlet{
     protected void doPost(ServletRequest request, ServletResponse response) throws ServletException,IOException {
         request.setCharacterEncoding("UTF8");
         String companyName = request.getParameter("companyName");
-        String dateOfRecognition = request.getParameter("dateOfRecognition");
+        String dateOfRegistration = request.getParameter("dateOfRegistration");
         String economicCode = request.getParameter("economicCode");
-        String customerNumber = request.getParameter("customerNumber");
         String outPut = "";
 
-        LegalCustomer legalCustomer = LegalCustomer.CreateLegalCustomer(economicCode,companyName,dateOfRecognition);
+        LegalCustomer legalCustomer = null;
+        try {
+            legalCustomer = LegalCustomerLogic.CreateLegalCustomer(economicCode, companyName, dateOfRegistration);
+        } catch (AssignCustomerNumberException e) {
+            e.printStackTrace();
+        }
         outPut = OutputHtml.generate(legalCustomer);
 
         response.setContentType("text/html");

@@ -54,6 +54,7 @@ public class OutputHtml {
         stringBuilder.append("                            <td>" + realCustomer.getCustomerNumber() + "</td>");
         stringBuilder.append("                        </tr>");
         stringBuilder.append("                    </table>");
+        stringBuilder.append("                <br><br><br>");
         stringBuilder.append("                    <a href=realCustomerManagement.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
@@ -67,6 +68,59 @@ public class OutputHtml {
 
 
 
+        return stringBuilder.toString();
+    }
+
+    public static String updateExceptionMessage(String exception) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<!DOCTYPE html>");
+        stringBuilder.append("<html lang=fa>");
+        stringBuilder.append("<head>");
+        stringBuilder.append("    <meta charset=UTF-8>");
+        stringBuilder.append("    <link href=css/Style.css rel=stylesheet>");
+        stringBuilder.append("    <title>خطا در ثبت اطلاعات مشتری</title>");
+        stringBuilder.append("</head>");
+        stringBuilder.append("<body>");
+        stringBuilder.append("<div class=title>");
+        stringBuilder.append("    <h1>خطا در ثبت اطلاعات مشتری</h1>");
+        stringBuilder.append("</div>");
+        stringBuilder.append("            <div class=main-box>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                 <h2>خطا!</h2>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                <p>" + exception + "</p>");
+        stringBuilder.append("                <br><br><br>");
+        stringBuilder.append("<a href=searchRealCustomer.html class=form>بازگشت به صفحه قبل</a>");
+        stringBuilder.append("            </div>");
+        stringBuilder.append("</body>");
+        stringBuilder.append("</html>");
+        return stringBuilder.toString();
+    }
+
+
+    public static String createExceptionMessage(String exception) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("<!DOCTYPE html>");
+        stringBuilder.append("<html lang=fa>");
+        stringBuilder.append("<head>");
+        stringBuilder.append("    <meta charset=UTF-8>");
+        stringBuilder.append("    <link href=css/Style.css rel=stylesheet>");
+        stringBuilder.append("    <title>خطا در ثبت اطلاعات مشتری</title>");
+        stringBuilder.append("</head>");
+        stringBuilder.append("<body>");
+        stringBuilder.append("<div class=title>");
+        stringBuilder.append("    <h1>خطا در ثبت اطلاعات مشتری</h1>");
+        stringBuilder.append("</div>");
+        stringBuilder.append("            <div class=main-box>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                 <h2>خطا!</h2>");
+        stringBuilder.append("                <br>");
+        stringBuilder.append("                <p>" + exception + "</p>");
+        stringBuilder.append("                <br><br><br>");
+        stringBuilder.append("<a href=createRealCustomer.html class=form>بازگشت به صفحه قبل</a>");
+        stringBuilder.append("            </div>");
+        stringBuilder.append("</body>");
+        stringBuilder.append("</html>");
         return stringBuilder.toString();
     }
 
@@ -88,6 +142,7 @@ public class OutputHtml {
         stringBuilder.append("                <br>");
         stringBuilder.append("                <br>");
         stringBuilder.append("                <p>" + message + "</p>");
+        stringBuilder.append("                <br><br><br>");
         stringBuilder.append("<a href=searchRealCustomer.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
@@ -112,6 +167,7 @@ public class OutputHtml {
         stringBuilder.append("                <br>");
         stringBuilder.append("                <br>");
         stringBuilder.append("                <p>" + message + "</p>");
+        stringBuilder.append("                <br><br><br>");
         stringBuilder.append("<a href=realCustomerManagement.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
@@ -160,6 +216,7 @@ public class OutputHtml {
             stringBuilder.append("                            <td><a href=DeleteRealCustomerServlet?id=" + realCustomer.getId() + " class=button type=>حذف</a>");
             stringBuilder.append("                            <a href=UpdateRealCustomerServlet?id=" + realCustomer.getId() + " class=button>اصلاح</a></td>");}
         stringBuilder.append("                    </table>");
+        stringBuilder.append("                <br><br><br>");
         stringBuilder.append("                    <a href=searchRealCustomer.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
@@ -183,11 +240,9 @@ public class OutputHtml {
         stringBuilder.append("</div>");
         stringBuilder.append("            <div class=main-box>");
         stringBuilder.append("                <br>");
-        stringBuilder.append("                 <form action='/SaveRealCustomerEditsServlet' method='post'>");
-        //stringBuilder.append("                 <form>");
+        stringBuilder.append("                <form action='/SaveRealCustomerEditsServlet' method='post'>");
         stringBuilder.append("                <p>اطلاعات مشتری حقیقی :</p>");
         stringBuilder.append("                <br>");
-        //stringBuilder.append("<input type='hidden' name='id' value='" + realCustomer.getId() + "'>");
         stringBuilder.append("                    <table>");
         stringBuilder.append("                        <tr>");
         stringBuilder.append("                            <td>شماره مشتری</td>");
@@ -211,12 +266,12 @@ public class OutputHtml {
         stringBuilder.append("                            <td>کد ملی</td>");
         stringBuilder.append("                            <td><input type='text' name='nationalCode' value='" + realCustomer.getNationalCode() + "'></td>");
         stringBuilder.append("                        </tr>");
-        //stringBuilder.append("                    <td><a href=SaveRealCustomerEditsServlet class=button> ذخیره تغییرات </a></td");
         stringBuilder.append("                    </table>");
         stringBuilder.append("                    <input type='submit' class='button' value='ذخیره تغییرات'>");
-
+        stringBuilder.append("                <br>");
         stringBuilder.append("                    </form>");
-//        stringBuilder.append("                    <a href=SaveRealCustomerEditsServlet type='submit' class=button> ذخیره تغییرات </a>");
+        stringBuilder.append("                <br><br><br>");
+        stringBuilder.append("<a href=searchRealCustomer.html class=form>بازگشت به صفحه قبل</a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
         stringBuilder.append("</html>");

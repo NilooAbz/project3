@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 /**
  * Created by DotinSchool2 on 8/8/2016.
@@ -24,6 +25,7 @@ public class UpdateRealCustomerServlet extends HttpServlet{
 
         RealCustomer realCustomer = RealCustomerLogic.retrieveRealCustomerById(id);
         outPut = OutputHtml.generateUpdatePage(realCustomer);
+
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();

@@ -1,6 +1,7 @@
 package dataAccessLayer;
 
 import dataAccessLayer.CRUD.LegalCustomerCRUD;
+import exceptions.AssignCustomerNumberException;
 
 /**
  * Created by DotinSchool2 on 8/1/2016.
@@ -53,15 +54,6 @@ public class LegalCustomer extends Customer {
         this.dateOfRegistration = dateOfRegistration;
     }
 
-    public static LegalCustomer CreateLegalCustomer( String economicCode, String companyName, String dateOfRegistration){
 
-        //validate
-        LegalCustomer legalCustomer = new LegalCustomer();
-        legalCustomer.setEconomicCode(economicCode);
-        legalCustomer.setCompanyName(companyName);
-        legalCustomer.setDateOfRegistration(dateOfRegistration);
-
-        return LegalCustomerCRUD.create(legalCustomer);
-    }
 
 }

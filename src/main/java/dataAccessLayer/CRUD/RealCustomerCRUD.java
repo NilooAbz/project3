@@ -1,6 +1,11 @@
 package dataAccessLayer.CRUD;
 
 import dataAccessLayer.Customer;
+import exceptions.AssignCustomerNumberException;
+import exceptions.DatabaseConnectionException;
+import exceptions.EmptyFieldException;
+import exceptions.NotExistNationalCodeException;
+import logicLayer.RealCustomerLogic;
 import utilty.JDBCConnection;
 import dataAccessLayer.RealCustomer;
 
@@ -13,7 +18,8 @@ import java.util.List;
  */
 public class RealCustomerCRUD extends Customer{
 
-    public static RealCustomer create(RealCustomer realCustomer) {
+    public static RealCustomer create(RealCustomer realCustomer)
+            throws DatabaseConnectionException, AssignCustomerNumberException {
 
         Customer customer = CustomerCRUD.create();
         realCustomer.setId(customer.getId());
@@ -35,8 +41,7 @@ public class RealCustomerCRUD extends Customer{
             //JDBCConnection.getJDBCConnection().commit();
 
         } catch (SQLException e) {
-            //exception khodam bayad write she
-            e.printStackTrace();
+            throw new DatabaseConnectionException(e.getMessage() + "خطا در ایجاد اتصال به پایگاه داده!");
         }
         return  realCustomer;
     }
@@ -141,7 +146,8 @@ public class RealCustomerCRUD extends Customer{
         }
     }
 
-    public static void updateCustomer( String customerNumber, String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode){
+    public static void updateCustomer( String customerNumber, String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode)
+            throws DatabaseConnectionException, NotExistNationalCodeException, EmptyFieldException {
         try {
             PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement
                     ("UPDATE realcustomer SET firstName = ? , lastName =  ? ,  fatherName = ?  ,  nationalCode = ?  ,  dateOfBirth = ?  WHERE customerNumber=?");
@@ -153,10 +159,12 @@ public class RealCustomerCRUD extends Customer{
             preparedStatement.setString(5, dateOfBirth);
             preparedStatement.setString(6, customerNumber);
 
+            RealCustomerLogic.validate(firstName.trim(), lastName.trim(), fatherName.trim(), dateOfBirth.trim(), nationalCode.trim());
+
             preparedStatement.execute();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseConnectionException(e.getMessage() + "خطا در به روز رسانی اطلاعات پایگاه داده!");
         }
     }
 }

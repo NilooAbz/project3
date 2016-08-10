@@ -17,11 +17,9 @@ public class DeleteRealCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        //String customerNumber =request.getParameter("customerNumber");
         Long id = Long.valueOf(request.getParameter("id"));
         String outPut = "";
 
-        //RealCustomerLogic.deleteById(customerNumber);
         RealCustomerLogic.deleteById(id);
         outPut = OutputHtml.generateSuccessfulDelete("عملیات حذف با موفقیت انجام شد.");
 
