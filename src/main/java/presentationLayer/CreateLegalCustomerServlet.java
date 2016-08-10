@@ -24,7 +24,7 @@ public class CreateLegalCustomerServlet extends HttpServlet{
         String customerNumber = request.getParameter("customerNumber");
         String outPut = "";
 
-        LegalCustomer legalCustomer = LegalCustomer.CreateLegalCustomer(economicCode,companyName,dateOfRecognition, customerNumber);
+        LegalCustomer legalCustomer = LegalCustomer.CreateLegalCustomer(economicCode,companyName,dateOfRecognition);
         outPut = OutputHtml.generate(legalCustomer);
 
         response.setContentType("text/html");

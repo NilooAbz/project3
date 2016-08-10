@@ -146,14 +146,14 @@ public class RealCustomerCRUD extends Customer{
             PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement
                     ("UPDATE realcustomer SET firstName = ? , lastName =  ? ,  fatherName = ?  ,  nationalCode = ?  ,  dateOfBirth = ?  WHERE customerNumber=?");
             //preparedStatement.setLong(1, id);
-            preparedStatement.setString(1, customerNumber);
-            preparedStatement.setString(2, firstName);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setString(4, fatherName);
-            preparedStatement.setString(5, nationalCode);
-            preparedStatement.setString(6, dateOfBirth);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, fatherName);
+            preparedStatement.setString(4, nationalCode);
+            preparedStatement.setString(5, dateOfBirth);
+            preparedStatement.setString(6, customerNumber);
 
-            preparedStatement.executeUpdate();
+            preparedStatement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();

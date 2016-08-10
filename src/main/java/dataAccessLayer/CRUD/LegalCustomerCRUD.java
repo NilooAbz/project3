@@ -13,10 +13,15 @@ import java.sql.SQLException;
  */
 public class LegalCustomerCRUD extends Customer{
 
-    public static void create(LegalCustomer legalCustomer){
+    public static LegalCustomer create(LegalCustomer legalCustomer){
+
+        Customer customer = CustomerCRUD.create();
+        legalCustomer.setId(customer.getId());
+        legalCustomer.setCustomerNumber(customer.getCustomerNumber());
+
         try {
             PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection()
-                    .prepareStatement("INSERT INTO legalcustomer (CompanyName, EconomicCode, DateOfRegistration, CustomerNumber) VALUES (?, ?, ?, ?);");
+                    .prepareStatement("INSERT INTO legalcustomer (id, companyName, economicCode, dateOfRegistration, customerNumber) VALUES (?, ?, ?, ?, ?);");
             preparedStatement.setString(1, legalCustomer.getCompanyName());
             preparedStatement.setString(2, legalCustomer.getEconomicCode());
             preparedStatement.setDate(3, Date.valueOf(legalCustomer.getDateOfRegistration()));
@@ -26,6 +31,8 @@ public class LegalCustomerCRUD extends Customer{
             //exception khodam bayad write she
             e.printStackTrace();
         }
+
+        return legalCustomer;
     }
 
     //public static void deleteBy

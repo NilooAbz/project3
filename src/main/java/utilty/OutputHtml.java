@@ -183,7 +183,7 @@ public class OutputHtml {
         stringBuilder.append("</div>");
         stringBuilder.append("            <div class=main-box>");
         stringBuilder.append("                <br>");
-        stringBuilder.append("                 <form action='SaveRealCustomerEditsServlet'>");
+        stringBuilder.append("                 <form action='/SaveRealCustomerEditsServlet' method='post'>");
         //stringBuilder.append("                 <form>");
         stringBuilder.append("                <p>اطلاعات مشتری حقیقی :</p>");
         stringBuilder.append("                <br>");
@@ -213,9 +213,10 @@ public class OutputHtml {
         stringBuilder.append("                        </tr>");
         //stringBuilder.append("                    <td><a href=SaveRealCustomerEditsServlet class=button> ذخیره تغییرات </a></td");
         stringBuilder.append("                    </table>");
-        /*stringBuilder.append("                    <input type='submit' class='button' value='ذخیره تغییرات'>");*/
-        stringBuilder.append("                    <a href=SaveRealCustomerEditsServlet type='submit' class=button> ذخیره تغییرات </a>");
+        stringBuilder.append("                    <input type='submit' class='button' value='ذخیره تغییرات'>");
+
         stringBuilder.append("                    </form>");
+//        stringBuilder.append("                    <a href=SaveRealCustomerEditsServlet type='submit' class=button> ذخیره تغییرات </a>");
         stringBuilder.append("            </div>");
         stringBuilder.append("</body>");
         stringBuilder.append("</html>");
