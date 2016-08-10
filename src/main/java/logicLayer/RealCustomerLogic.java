@@ -28,7 +28,8 @@ public class RealCustomerLogic {
         return  RealCustomerCRUD.create(realCustomer);
     }
 
-    public static  void validate(String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode) throws EmptyFieldException, NotExistNationalCodeException {
+    public static  void validate(String firstName, String lastName, String fatherName, String dateOfBirth, String nationalCode)
+            throws EmptyFieldException, NotExistNationalCodeException {
         if (firstName.equals("")) {
             throw new EmptyFieldException("لطفا فیلد نام را وارد کنید.");
         }

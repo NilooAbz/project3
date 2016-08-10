@@ -21,7 +21,7 @@ public class DeleteRealCustomerServlet extends HttpServlet {
         String outPut = "";
 
         RealCustomerLogic.deleteById(id);
-        outPut = OutputHtml.generateSuccessfulDelete("عملیات حذف با موفقیت انجام شد.");
+        outPut = OutputHtml.generateRealSuccessfulDelete("عملیات حذف با موفقیت انجام شد.");
 
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");

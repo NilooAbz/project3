@@ -3,6 +3,7 @@ package presentationLayer;
 import exceptions.DatabaseConnectionException;
 import exceptions.EmptyFieldException;
 import exceptions.NotExistNationalCodeException;
+import logicLayer.LegalCustomerLogic;
 import logicLayer.RealCustomerLogic;
 import utilty.OutputHtml;
 
@@ -14,31 +15,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by DotinSchool2 on 8/9/2016.
+ * Created by DotinSchool2 on 8/10/2016.
  */
-public class SaveRealCustomerEditsServlet extends HttpServlet {
+public class SaveLegalCustomerEditsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        //Long id = Long.valueOf(request.getParameter("id"));
         String customerNumber = request.getParameter("customerNumber");
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String fatherName = request.getParameter("fatherName");
-        String dateOfBirth = request.getParameter("dateOfBirth");
-        String nationalCode = request.getParameter("nationalCode");
+        String companyName = request.getParameter("companyName");
+        String economicCode = request.getParameter("economicCode");
+        String dateOfRegistration = request.getParameter("dateOfRegistration");
+
         String outPut = "";
 
         try {
-            RealCustomerLogic.updateCustomer( customerNumber, firstName, lastName, fatherName, dateOfBirth, nationalCode);
-            outPut = OutputHtml.generateRealSuccessful("اطلاعات مشتری با موفقیت اصلاح شد.");
+            LegalCustomerLogic.updateCustomer( customerNumber, companyName, economicCode, dateOfRegistration);
+            outPut = OutputHtml.generateLegalSuccessful("اطلاعات مشتری با موفقیت اصلاح شد.");
         } catch (DatabaseConnectionException e) {
-            outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
+            outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
         } catch (EmptyFieldException e) {
-            outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
+            outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
         } catch (NotExistNationalCodeException e) {
-            outPut = OutputHtml.updateRealExceptionMessage(e.getMessage());
+            outPut = OutputHtml.updateLegalExceptionMessage(e.getMessage());
         }
 
 

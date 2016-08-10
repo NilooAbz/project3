@@ -22,15 +22,13 @@ public class SearchRealCustomerServlet extends HttpServlet{
         String customerNumber = request.getParameter("customerNumber");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-/*        String fatherName = request.getParameter("fatherName");
-        String dateOfBirth = request.getParameter("dateOfBirth");*/
         String nationalCode = request.getParameter("nationalCode");
         String outPut = "";
 
         ArrayList<RealCustomer> realCustomers = RealCustomerLogic.retrieveRealCustomer(customerNumber, nationalCode, firstName,lastName);
 
         if(realCustomers.size() == 0){
-            outPut = OutputHtml.generateSuccessful("مشتری با اطلاعات وارد شده وجود ندارد.");
+            outPut = OutputHtml.generateRealSuccessful("مشتری با اطلاعات وارد شده وجود ندارد.");
         }else {
             outPut = OutputHtml.generateRealCustomerResults(realCustomers);
         }

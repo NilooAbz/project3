@@ -36,13 +36,13 @@ public class CreateRealCustomerServlet extends HttpServlet {
             outPut = OutputHtml.generate(realCustomer);
 
         } catch (NotExistNationalCodeException e) {
-            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+            outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         } catch (EmptyFieldException e) {
-            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+            outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         } catch (DatabaseConnectionException e) {
-            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+            outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         } catch (AssignCustomerNumberException e) {
-            outPut = OutputHtml.createExceptionMessage(e.getMessage());
+            outPut = OutputHtml.createRealExceptionMessage(e.getMessage());
         }
 
         response.setContentType("text/html; charset=UTF-8");

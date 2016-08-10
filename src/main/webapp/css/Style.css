@@ -56,5 +56,12 @@ label{
     text-align: right;
     align-items: right;
     alignment: right;
-
 }
+/*
+.result-table {
+    height: 50px;
+    text-align: right;
+    vertical-align: middle;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}*/

@@ -78,18 +78,18 @@ public class RealCustomerCRUD extends Customer{
         int counter = 1;
         List<String> parameters = new ArrayList<String>();
 
-        if(firstName != "") {
+        if(!firstName.equals("")) {
             sqlCommand.append(" firstName =? AND");
             parameters.add(firstName);
         }
-        if(lastName != "") {
+        if(!"".equals(lastName)) {
             sqlCommand.append(" lastName =? AND");
             parameters.add(lastName);
-        }if(customerNumber != "" && customerNumber != null) {
+        }if(customerNumber != null && (!customerNumber.equals( ""))) {
             sqlCommand.append(" customerNumber =? AND");
             parameters.add(customerNumber);
         }
-        if(nationalCode != "") {
+        if(!nationalCode.equals( "")) {
             sqlCommand.append(" nationalCode =? AND");
             parameters.add(nationalCode);
         }

@@ -26,13 +26,26 @@
         <servlet-class>presentationLayer.DeleteRealCustomerServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DeleteLegalCustomerServlet</servlet-name>
+        <servlet-class>presentationLayer.DeleteLegalCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UpdateRealCustomerServlet</servlet-name>
         <servlet-class>presentationLayer.UpdateRealCustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateLegalCustomerServlet</servlet-name>
+        <servlet-class>presentationLayer.UpdateLegalCustomerServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SaveRealCustomerEditsServlet</servlet-name>
         <servlet-class>presentationLayer.SaveRealCustomerEditsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SaveLegalCustomerEditsServlet</servlet-name>
+        <servlet-class>presentationLayer.SaveLegalCustomerEditsServlet</servlet-class>
+    </servlet>
+
 
     <servlet-mapping>
         <servlet-name>CreateLegalCustomerServlet</servlet-name>
@@ -55,12 +68,24 @@
         <url-pattern>/DeleteRealCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>DeleteLegalCustomerServlet</servlet-name>
+        <url-pattern>/DeleteLegalCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>UpdateRealCustomerServlet</servlet-name>
         <url-pattern>/UpdateRealCustomerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>UpdateLegalCustomerServlet</servlet-name>
+        <url-pattern>/UpdateLegalCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SaveRealCustomerEditsServlet</servlet-name>
         <url-pattern>/SaveRealCustomerEditsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveLegalCustomerEditsServlet</servlet-name>
+        <url-pattern>/SaveLegalCustomerEditsServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
