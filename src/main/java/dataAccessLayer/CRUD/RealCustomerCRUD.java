@@ -58,7 +58,7 @@ public class RealCustomerCRUD extends Customer{
                 realCustomer.setFirstName(results.getString("firstName"));
                 realCustomer.setLastName(results.getString("lastName"));
                 realCustomer.setFatherName(results.getString("fatherName"));
-                realCustomer.setDateOfBirth(String.valueOf(results.getDate("dateOfBirth")));
+                realCustomer.setDateOfBirth(results.getString("dateOfBirth"));
                 realCustomers.add(realCustomer);
             }
         } catch (SQLException e) {
@@ -102,7 +102,6 @@ public class RealCustomerCRUD extends Customer{
     }
 
     public static RealCustomer retrieveById(Long id){
-
         RealCustomer realcustomer = new RealCustomer();
         try {
             PreparedStatement preparedStatement = JDBCConnection.getJDBCConnection().prepareStatement("SELECT * From realcustomer WHERE id=?;");

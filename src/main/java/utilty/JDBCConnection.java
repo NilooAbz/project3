@@ -20,7 +20,6 @@ public class JDBCConnection {
     private static Connection connection = null;
 
     private  JDBCConnection(){
-
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL,USER,PASS);
